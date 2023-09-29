@@ -38,7 +38,7 @@ function Home(){
                     </Row>
                 </Col>
             <Col sm={4} md={4} lg={4} xl={4}>
-                {useState.length>0 && <BookDetail isbn={detailIndex}/>}
+                {detailIndex.length>0 && <BookDetail isbn={detailIndex}/>}
                 </Col>
             </Row>
         </Container>
