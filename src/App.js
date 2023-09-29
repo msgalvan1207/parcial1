@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element = {<h1 className='text-center'>Hola Mundo</h1>}/>
-          <Route patg='/algo' element = {<Algo/>}/>
+          <Route path='/algo' element = {<Algo/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -7,10 +7,10 @@ function Algo(){
 
     useEffect(()=>{
         fetch(URL).then(response => response.json()).then(data=>setCosa(data))
-    },[])  //Ejecuta la primera vez que renderiza la pagina
+    },[]) //Ejecuta la primera vez que renderiza la pagina
 
     return (
-        <h1>Hola mundo!</h1>
+        <h1>Cosa link</h1>
     )
 }
 
