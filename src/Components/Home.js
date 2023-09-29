@@ -4,7 +4,6 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Cafe from "./Cafe"
 import CafeDetail from "./CafeDetail";
-//import CafeDetail from "./CafeDetail
 
 
 function Home() {

@@ -5,7 +5,6 @@ import Container from "react-bootstrap/esm/Container";
 
 function CafeDetail(prop) {
 
-    const id = prop.id
 
     //const [Cafe, setCafe] = useState({})
 
@@ -17,6 +16,7 @@ function CafeDetail(prop) {
     return(
         <Container>
             <Row><h2>{prop.nombre}</h2></Row>
+            {console.log(prop)}
             <Row>
                 {prop.tipo}
             </Row>
