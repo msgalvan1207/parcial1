@@ -10,8 +10,19 @@ import Button from "react-bootstrap/Button";
 function Login() {
 
   const [formValues, setFormValues] = useState({email:"", password:""});
-
   const [validationStates, setValidationStates] = useState({emailState:false, passwordState:false})
+
+  const [dataPost, setDataPost] = useState({})
+
+  const API_KEY = "7d7c6d00"
+
+
+  async function handlePost() {
+    const response = await fetch("https://my.api.mockaroo.com/login.json?key="+API_KEY+"&email="+formValues.email, { method: "POST", body: JSON.stringify(formValues), headers: {"X-Requested-With": "XMLHttpRequest"} });
+    const data = await response.json()
+    console.log(JSON.stringify(data))
+    setDataPost(JSON.stringify(data))
+  }
 
   const handleEmailChange = (e) => {
     setFormValues({...formValues, email: e.target.value})
@@ -38,6 +49,8 @@ function Login() {
   const clickSignIn = () => {
     if (validationStates.emailState && validationStates.passwordState)
     {
+      handlePost()
+      alert(JSON.stringify(dataPost))
       window.location.href = '/Home';
     }
   }
@@ -67,7 +80,9 @@ function Login() {
               {!validationStates.passwordState && <Form.Text className='text-muted'>La contraseña debe tener 6 caractes</Form.Text>}
             </Form.Group>
 
-            <Button variant='primary' onClick={clickSignIn}>Sign in</Button>
+            <div className='text-center'>
+            <Button variant='primary' className='text-center' onClick={clickSignIn}>Sign in</Button>
+            </div>
           </Form>
         </Col>
         </Row>
