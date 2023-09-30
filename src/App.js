@@ -11,14 +11,19 @@ import Algo from './Components/algo';
 function App() {
   return (
     <div className="App">
-      <h1>El aroma magico</h1>
-       <Container fluid><img src='algo.jpg' alt='cafe'/> </Container>
+      <Container>
+        <div className='font1'>El aroma magico</div>
+        <div className='line'>{""}</div>
+        <img className='banner' src='cafe.png' alt='foto del banner: cafe'/>
+        <div className='line'>{""}</div>
+      </Container>
       <BrowserRouter>
         <Routes>
           <Route path='/' element = {<Login/>}/>
           <Route path='/home' element = {<Home/>}/>
         </Routes>
       </BrowserRouter>
+      <p className='text-center mt-5'>Contact us: +57 3102105253 - info@elaromamagico.com - @elaromamagico</p>
     </div>
   );
 }

@@ -15,8 +15,8 @@ function CafeDetail(prop) {
 
     return(
         <Container>
+            {prop.nombre}
             <Row><h2>{prop.nombre}</h2></Row>
-            {console.log(prop)}
             <Row>
                 {prop.tipo}
             </Row>

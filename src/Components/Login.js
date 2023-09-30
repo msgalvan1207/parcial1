@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
+import "./Login.css";
 
 function Login() {
     const [formValues, setFormValues] = useState({user:"", password:""});
@@ -50,22 +51,22 @@ function Login() {
     return (
         <div>
             <Container>
-                <h1>Inicio de sesión</h1>
-                <Container>
+                <Container className='loginfont mb-3 width' >Inicio de sesión</Container>
+                <Container className='loginContainer'>
                     <Form>
-                        <Form.Group className='mb-6' controlId='userForm'>
-                            <Form.Label>Username</Form.Label>
+                        <Form.Group className='mb-2' controlId='userForm'>
+                            <Form.Label className='loginfont'>Username</Form.Label>
                             <Form.Control required onChange={handleUserChange} value = {formValues.user}/>
                         </Form.Group>
 
                         <Form.Group className='mb-3'>
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label className='loginfont'>Password</Form.Label>
                             <Form.Control required type="password" onChange={handlePasswordChange} value = {formValues.password}/>
                         </Form.Group>
 
                         <Row>
-                            <Col> <Button variant='primary' className='btn-sucess' onClick={clickSignIn}>Ingresar</Button></Col>
-                            <Col> <Button variant='primary' className='btn-danger' onClick={clickCancel}>Cancelar</Button></Col>
+                            <Col className='text-center'> <Button variant='primary' className='btn-sucess' onClick={clickSignIn}>Ingresar</Button></Col>
+                            <Col className='text-center'> <Button variant='primary' className='btn-danger' onClick={clickCancel}>Cancelar</Button></Col>
                         </Row>
 
                     </Form>
