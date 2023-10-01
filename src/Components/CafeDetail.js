@@ -9,14 +9,11 @@ function CafeDetail(prop) {
 
 
     const [Cafe, setCafe] = useState({})
-    const [id, setId] = useState("")
-
+    //const [id, setId] = useState("")
     const URL = "http://localhost:3001/"
 
+    const id = prop.id
 
-    useEffect(()=>{
-      setId(prop.id)
-    },)
 
     useEffect(()=>{
       //normalmente deberia hacer fetch pero no hay tiempo para eso
