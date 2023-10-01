@@ -8,22 +8,25 @@ import "./Login.css";
 import { FormattedMessage } from "react-intl";
 
 function Login() {
-    const [formValues, setFormValues] = useState({user:"", password:""});
-    const [validationState, setValidationStates] = useState(false);
+    const [formValues, setFormValues] = useState({login:"", password:""});
+    const [validationState, setValidationStates] = useState(true);
 
-    const [dataPost, setDataPost] = useState({})
-
-    const URL = ''
+    const URL = 'http://localhost:3001/'
 
     async function handlePost() {
-        const response = await fetch(URL, { method: "POST", body: JSON.stringify(formValues), headers: {"X-Requested-With": "XMLHttpRequest"} });
+        console.log(JSON.stringify(formValues))
+        const response = await fetch(URL + 'login', { method: "POST", body: JSON.stringify(formValues), headers: {"Content-type":'application/json;charset=utf-8'} });
         const data = await response.json()
-        console.log(JSON.stringify(data))
-        setDataPost(JSON.stringify(data))
+        if (data.status==="success"){
+            setValidationStates(true)
+            window.location.href='/home'
+        } else {
+            setValidationStates(false)
+        }
     }
 
-    const handleUserChange = (e) => {
-        setFormValues({...formValues, user: e.target.value})
+    const handleloginChange = (e) => {
+        setFormValues({...formValues, login: e.target.value})
     }
 
     const handlePasswordChange = (e) => {
@@ -32,9 +35,10 @@ function Login() {
 
     const clickSignIn = () => {
         console.log("realizar validacion")
-        if (formValues.user.length>0 && formValues.password.length>0){
-            alert("Para esta etapa, se valida que user y contraseña tengan algo")
-            window.location.href = '/home';
+        if (formValues.login.length>0 && formValues.password.length>0){
+        //    alert("Para esta etapa, se valida que login y contraseña tengan algo")
+        //    window.location.href = '/home';
+        handlePost()
         } else
         {
             console.log("bleh")
@@ -44,7 +48,7 @@ function Login() {
 
     const clickCancel = () => {
         console.log("cancelar inicio de sesion")
-        setFormValues({...formValues, password:"", user:"" })
+        setFormValues({...formValues, password:"", login:"" })
         //no estoy muy seguro que deberia pasar aqui
     }
 
@@ -54,21 +58,22 @@ function Login() {
                 <Container className='loginfont mb-3 width' ><FormattedMessage id='Signin'/></Container>
                 <Container className='loginContainer'>
                     <Form>
-                        <Form.Group className='mb-2' controlId='userForm'>
+                        <Form.Group className='mb-2' controlId='loginForm'>
                             <Form.Label className='loginfont'><FormattedMessage id='Username'/></Form.Label>
-                            <Form.Control required onChange={handleUserChange} value = {formValues.user}/>
+                            <Form.Control required onChange={handleloginChange} value = {formValues.login}/>
                         </Form.Group>
 
                         <Form.Group className='mb-3'>
                             <Form.Label className='loginfont'><FormattedMessage id='Password'/></Form.Label>
                             <Form.Control required type="password" onChange={handlePasswordChange} value = {formValues.password}/>
                         </Form.Group>
+                        
 
-                        <Row>
+                        <Row className='mb-3'>
                             <Col className='text-center'> <Button variant='primary' className='btn-sucess' onClick={clickSignIn}><FormattedMessage id='Login'/></Button></Col>
                             <Col className='text-center'> <Button variant='primary' className='btn-danger' onClick={clickCancel}><FormattedMessage id='Cancel'/></Button></Col>
                         </Row>
-
+                        <Row>{!validationState && <p className='loginfont text-danger'><FormattedMessage id="AuthError"/></p>}</Row>
                     </Form>
                 </Container>
             </Container>
