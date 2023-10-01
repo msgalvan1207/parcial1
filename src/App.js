@@ -5,6 +5,7 @@ import './App.css';
 import Login from './Components/Login';
 import Home from './Components/Home';
 import { Container } from "react-bootstrap";
+import { FormattedMessage } from "react-intl";
 
 import Algo from './Components/algo';
 
@@ -16,14 +17,14 @@ function App() {
         <div className='line'>{""}</div>
         <img className='banner' src='cafe.png' alt='foto del banner: cafe'/>
         <div className='line'>{""}</div>
-      </Container>
       <BrowserRouter>
         <Routes>
           <Route path='/' element = {<Login/>}/>
           <Route path='/home' element = {<Home/>}/>
         </Routes>
       </BrowserRouter>
-      <p className='text-center mt-5'>Contact us: +57 3102105253 - info@elaromamagico.com - @elaromamagico</p>
+      <p className='text-center mt-5'><FormattedMessage id='ContactInfo'/></p>
+      </Container>
     </div>
   );
 }

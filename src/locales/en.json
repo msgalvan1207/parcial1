@@ -1,0 +1,19 @@
+{
+    "Signin": "Sign in",
+
+    "Username" : "Username",
+    "Password": "Password",
+    "AuthError": "Authentication error. Check your credentials",
+
+    "ContactInfo" : "Contact us: +57 3102105253 - info@elaromamagico.com - @elaromamagico",
+    "Login": "Log in",
+    "Canel": "Cancel",
+
+    "Name": "Name",
+    "Type": "Type",
+    "Region": "Region",
+
+    "Notes": "Notes",
+
+    "HeightFormat": "Grown at a heigh of {number, number} masl"
+}

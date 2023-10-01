@@ -4,11 +4,13 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Cafe from "./Cafe"
 import CafeDetail from "./CafeDetail";
+import { FormattedMessage } from "react-intl";
 
 
 function Home() {
     const [cafes, setcafes] = useState([])
     const [detailId, setDetailId] = useState("")
+    const [test, setTest] = useState(false)
 
     useEffect(()=>{
         //deberia hacer fetch para la entrega final
@@ -84,6 +86,7 @@ function Home() {
 
     const handleCafeClick = (id) => {
         setDetailId(id)
+        setTest(true)
     }
 
     return (
@@ -94,9 +97,9 @@ function Home() {
                         <thead className="table-dark">
                             <tr>
                                 <th scope='col'>#</th>
-                                <th scope='col'>Nombre</th>
-                                <th scope='col'>Tipo</th>
-                                <th scope='col'>Region</th>
+                                <th scope='col'><FormattedMessage id='Name'/></th>
+                                <th scope='col'><FormattedMessage id='Type'/></th>
+                                <th scope='col'><FormattedMessage id='Region'/></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -107,11 +110,9 @@ function Home() {
                     </table>
                 </Col>
             <Col sm={4} md={4} lg={4} xl={4}>
-                <h1>Hola mundo</h1>
-                {!detailId===""? detailId.length:<h1>{detailId}</h1>}
+                {!(detailId==="") && <CafeDetail id={detailId}/>}
                 </Col>
             </Row>
-            {detailId===""? <h1>{detailId.length}</h1>:<h1>{detailId}</h1>}
         </div>
     )
 

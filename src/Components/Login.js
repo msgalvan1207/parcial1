@@ -3,9 +3,9 @@ import Row from "react-bootstrap/Row"
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
-import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+import { FormattedMessage } from "react-intl";
 
 function Login() {
     const [formValues, setFormValues] = useState({user:"", password:""});
@@ -51,22 +51,22 @@ function Login() {
     return (
         <div>
             <Container>
-                <Container className='loginfont mb-3 width' >Inicio de sesión</Container>
+                <Container className='loginfont mb-3 width' ><FormattedMessage id='Signin'/></Container>
                 <Container className='loginContainer'>
                     <Form>
                         <Form.Group className='mb-2' controlId='userForm'>
-                            <Form.Label className='loginfont'>Username</Form.Label>
+                            <Form.Label className='loginfont'><FormattedMessage id='Username'/></Form.Label>
                             <Form.Control required onChange={handleUserChange} value = {formValues.user}/>
                         </Form.Group>
 
                         <Form.Group className='mb-3'>
-                            <Form.Label className='loginfont'>Password</Form.Label>
+                            <Form.Label className='loginfont'><FormattedMessage id='Password'/></Form.Label>
                             <Form.Control required type="password" onChange={handlePasswordChange} value = {formValues.password}/>
                         </Form.Group>
 
                         <Row>
-                            <Col className='text-center'> <Button variant='primary' className='btn-sucess' onClick={clickSignIn}>Ingresar</Button></Col>
-                            <Col className='text-center'> <Button variant='primary' className='btn-danger' onClick={clickCancel}>Cancelar</Button></Col>
+                            <Col className='text-center'> <Button variant='primary' className='btn-sucess' onClick={clickSignIn}><FormattedMessage id='Login'/></Button></Col>
+                            <Col className='text-center'> <Button variant='primary' className='btn-danger' onClick={clickCancel}><FormattedMessage id='Cancel'/></Button></Col>
                         </Row>
 
                     </Form>

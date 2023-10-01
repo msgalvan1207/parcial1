@@ -7,10 +7,27 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+import localeEsMessages from "./locales/es.json";
+import localeEnMessages from "./locales/en.json";
+
+import { IntlProvider } from "react-intl";
+
+const det = () => {
+  if (navigator.language.includes('en')){
+    return localeEnMessages
+  } else if (navigator.language.includes('es')) {
+    return localeEsMessages
+  }
+}
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <IntlProvider locale = {navigator.language} messages={det()}>
     <App />
+    </IntlProvider>
   </React.StrictMode>
 );
 
